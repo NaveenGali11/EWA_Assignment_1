@@ -7,19 +7,19 @@
           "name": "Ring Doorbell",
           "price": 199.99,
           "description": "HD video doorbell with motion detection",
-          "image": "https://example.com/ring-doorbell.jpg",
+          "image": "https://m.media-amazon.com/images/I/71vtXgJBagL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Extra Battery Pack",
               "price": 29.99,
               "description": "Extended battery life for your Ring Doorbell",
-              "image": "https://example.com/ring-battery.jpg"
+              "image": "https://m.media-amazon.com/images/I/61e2olLqUiL._AC_UY436_FMwebp_QL65_.jpg"
             },
             {
               "name": "Mounting Bracket",
               "price": 19.99,
               "description": "Secure mounting for your Ring Doorbell",
-              "image": "https://example.com/ring-bracket.jpg"
+              "image": "https://m.media-amazon.com/images/I/215gK+J0zkL._SY300_SX300_.jpg"
             }
           ]
         },
@@ -27,19 +27,19 @@
           "name": "Nest Hello",
           "price": 229.99,
           "description": "Smart video doorbell with night vision",
-          "image": "https://example.com/nest-hello.jpg",
+          "image": "https://m.media-amazon.com/images/I/51ZvGZmTsUL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Chime",
               "price": 49.99,
               "description": "Chime for your Nest Hello doorbell",
-              "image": "https://example.com/nest-chime.jpg"
+              "image": "https://m.media-amazon.com/images/I/51JaXyHzRdL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Mounting Kit",
               "price": 25.99,
               "description": "Mounting kit for easy installation",
-              "image": "https://example.com/nest-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/614uTC0tL7L._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -47,19 +47,19 @@
           "name": "Arlo Video Doorbell",
           "price": 179.99,
           "description": "Smart doorbell with HD video and wide-angle lens",
-          "image": "https://example.com/arlo-doorbell.jpg",
+          "image": "https://m.media-amazon.com/images/I/61pNoavvQQL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Power Adapter",
               "price": 19.99,
               "description": "Adapter for continuous power",
-              "image": "https://example.com/arlo-adapter.jpg"
+              "image": "https://m.media-amazon.com/images/I/61itiEE370L._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Doorbell Chime",
               "price": 39.99,
               "description": "Wireless chime for Arlo Doorbell",
-              "image": "https://example.com/arlo-chime.jpg"
+              "image": "https://m.media-amazon.com/images/I/51NLL1wTU5L._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -67,19 +67,19 @@
           "name": "Eufy Video Doorbell",
           "price": 159.99,
           "description": "Smart video doorbell with 2K resolution",
-          "image": "https://example.com/eufy-doorbell.jpg",
+          "image": "https://m.media-amazon.com/images/I/61z7+FY4FRL._AC_UY436_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wall Mount",
               "price": 15.99,
               "description": "Secure mounting kit for installation",
-              "image": "https://example.com/eufy-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/816NmujXIJL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
             },
             {
               "name": "HomeBase",
               "price": 99.99,
               "description": "Connect your doorbell to HomeBase for local storage",
-              "image": "https://example.com/eufy-homebase.jpg"
+              "image": "https://m.media-amazon.com/images/I/5172m6LnUJL._AC_UY436_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -87,19 +87,19 @@
           "name": "SimpliSafe Video Doorbell",
           "price": 169.99,
           "description": "Smart doorbell with HD video and motion alerts",
-          "image": "https://example.com/simplisafe-doorbell.jpg",
+          "image": "https://m.media-amazon.com/images/I/51b4Zw3O+fL._AC_UY436_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wedge Kit",
               "price": 19.99,
               "description": "Adjust the viewing angle with this wedge kit",
-              "image": "https://example.com/simplisafe-wedge.jpg"
+              "image": "https://m.media-amazon.com/images/I/91br-7SoOFL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Extra Mounting Kit",
               "price": 14.99,
               "description": "Spare kit for easy reinstallation",
-              "image": "https://example.com/simplisafe-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/51XHdOXcE+L._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         }
@@ -112,19 +112,19 @@
           "name": "August Smart Lock",
           "price": 149.99,
           "description": "Smart lock with app control",
-          "image": "https://example.com/august-lock.jpg",
+          "image": "https://m.media-amazon.com/images/I/51erJ1k7xpL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wi-Fi Bridge",
               "price": 79.99,
               "description": "Remote control for your August Smart Lock",
-              "image": "https://example.com/august-bridge.jpg"
+              "image": "https://m.media-amazon.com/images/I/41QzG4gS7mL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Keypad",
               "price": 59.99,
               "description": "Keypad for keyless entry",
-              "image": "https://example.com/august-keypad.jpg"
+              "image": "https://m.media-amazon.com/images/I/61BNIdkZTbL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -132,19 +132,19 @@
           "name": "Yale Assure Lock",
           "price": 199.99,
           "description": "Keyless smart lock with touchscreen",
-          "image": "https://example.com/yale-lock.jpg",
+          "image": "https://m.media-amazon.com/images/I/61HF-nfu02L._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Z-Wave Module",
               "price": 49.99,
               "description": "Z-Wave module for smart home integration",
-              "image": "https://example.com/yale-zwave.jpg"
+              "image": "https://m.media-amazon.com/images/I/41OjxlNMWHL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Keypad",
               "price": 59.99,
               "description": "Touchscreen keypad for keyless access",
-              "image": "https://example.com/yale-keypad.jpg"
+              "image": "https://m.media-amazon.com/images/I/615oD4YcRTL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -152,19 +152,19 @@
           "name": "Schlage Encode",
           "price": 249.99,
           "description": "Wi-Fi-enabled deadbolt with built-in alarm",
-          "image": "https://example.com/schlage-encode.jpg",
+          "image": "https://m.media-amazon.com/images/I/71K8wRP-xgL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wi-Fi Adapter",
               "price": 59.99,
               "description": "Adapter to control remotely",
-              "image": "https://example.com/schlage-adapter.jpg"
+              "image": "https://m.media-amazon.com/images/I/41NLyPLeK6L._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Keypad",
               "price": 49.99,
               "description": "External keypad for code access",
-              "image": "https://example.com/schlage-keypad.jpg"
+              "image": "https://m.media-amazon.com/images/I/71RHNFxNibL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -172,19 +172,19 @@
           "name": "Kwikset Halo",
           "price": 199.99,
           "description": "Smart lock with built-in Wi-Fi",
-          "image": "https://example.com/kwikset-halo.jpg",
+          "image": "https://m.media-amazon.com/images/I/714QeksELSL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Keypad",
               "price": 39.99,
               "description": "Touchscreen keypad for keyless access",
-              "image": "https://example.com/kwikset-keypad.jpg"
+              "image": "https://m.media-amazon.com/images/I/61yC5xhcY-L._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Key Fob",
               "price": 19.99,
               "description": "Remote control for quick access",
-              "image": "https://example.com/kwikset-fob.jpg"
+              "image": "https://m.media-amazon.com/images/I/71hq08w7qgL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -192,19 +192,19 @@
           "name": "Level Lock",
           "price": 229.99,
           "description": "Invisible smart lock with app control",
-          "image": "https://example.com/level-lock.jpg",
+          "image": "https://m.media-amazon.com/images/I/61ZH2CEQfaL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Battery Pack",
               "price": 29.99,
               "description": "Extended battery pack for Level Lock",
-              "image": "https://example.com/level-battery.jpg"
+              "image": "https://m.media-amazon.com/images/I/61AZfCuN0oL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Keypad",
               "price": 49.99,
               "description": "Keypad for keyless access",
-              "image": "https://example.com/level-keypad.jpg"
+              "image": "https://m.media-amazon.com/images/I/51X+rWv08XL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         }
@@ -217,19 +217,19 @@
           "name": "Amazon Echo",
           "price": 99.99,
           "description": "Smart speaker with Alexa",
-          "image": "https://example.com/echo.jpg",
+          "image": "https://m.media-amazon.com/images/I/518cRYanpbL._AC_UY436_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Speaker Stand",
               "price": 19.99,
               "description": "Stylish stand for your Amazon Echo",
-              "image": "https://example.com/echo-stand.jpg"
+              "image": "https://m.media-amazon.com/images/I/51BElb1XOpL._AC_UY436_FMwebp_QL65_.jpg"
             },
             {
               "name": "Remote Control",
               "price": 29.99,
               "description": "Remote control for easier usage",
-              "image": "https://example.com/echo-remote.jpg"
+              "image": "https://m.media-amazon.com/images/I/41kTYzDaAeL._AC_UY436_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -237,19 +237,19 @@
           "name": "Google Nest Audio",
           "price": 89.99,
           "description": "Smart speaker with Google Assistant",
-          "image": "https://example.com/nest-audio.jpg",
+          "image": "https://m.media-amazon.com/images/I/71TeLBggnwL._AC_UY436_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wall Mount",
               "price": 25.99,
               "description": "Wall mount for secure installation",
-              "image": "https://example.com/nest-wall-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/71zwNzUhAAS._AC_UY436_FMwebp_QL65_.jpg"
             },
             {
               "name": "Speaker Stand",
               "price": 19.99,
               "description": "Stylish stand for better placement",
-              "image": "https://example.com/nest-stand.jpg"
+              "image": "https://m.media-amazon.com/images/I/71giHLfbcRL._AC_UY436_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -257,19 +257,19 @@
           "name": "Sonos One",
           "price": 199.99,
           "description": "Voice-controlled smart speaker with Alexa and Google Assistant",
-          "image": "https://example.com/sonos-one.jpg",
+          "image": "https://m.media-amazon.com/images/I/71fAeaUTNvL._AC_UY436_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Speaker Mount",
               "price": 35.99,
               "description": "Wall mount for better placement",
-              "image": "https://example.com/sonos-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/31ifb6vYPFL._AC_UY436_FMwebp_QL65_.jpg"
             },
             {
               "name": "Speaker Stand",
               "price": 29.99,
               "description": "Stylish stand for better sound experience",
-              "image": "https://example.com/sonos-stand.jpg"
+              "image": "https://m.media-amazon.com/images/I/61cztHqlQTL._AC_UY436_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -277,19 +277,19 @@
           "name": "Apple HomePod Mini",
           "price": 99.99,
           "description": "Compact smart speaker with Siri",
-          "image": "https://example.com/homepod-mini.jpg",
+          "image": "https://m.media-amazon.com/images/I/71jThE945YL._AC_UY436_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wall Mount",
               "price": 25.99,
               "description": "Mount your HomePod Mini easily",
-              "image": "https://example.com/homepod-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/61nIgnmLm5L._AC_UY436_FMwebp_QL65_.jpg"
             },
             {
               "name": "Travel Case",
               "price": 19.99,
               "description": "Portable case for easy travel",
-              "image": "https://example.com/homepod-case.jpg"
+              "image": "https://m.media-amazon.com/images/I/71MHQgGqqzS._AC_UY436_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -297,19 +297,19 @@
           "name": "Bose Home Speaker 500",
           "price": 299.99,
           "description": "Premium sound with voice control",
-          "image": "https://example.com/bose-home-speaker.jpg",
+          "image": "https://m.media-amazon.com/images/I/A1C7sVGi7EL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
           "accessories": [
             {
               "name": "Remote Control",
               "price": 29.99,
               "description": "Convenient control with a remote",
-              "image": "https://example.com/bose-remote.jpg"
+              "image": "https://m.media-amazon.com/images/I/51p+DHUXyrL._AC_UY436_FMwebp_QL65_.jpg"
             },
             {
               "name": "Speaker Stand",
               "price": 39.99,
               "description": "Improve sound with a premium stand",
-              "image": "https://example.com/bose-stand.jpg"
+              "image": "https://m.media-amazon.com/images/I/6172hxN-xOL._AC_UY436_FMwebp_QL65_.jpg"
             }
           ]
         }
@@ -322,19 +322,19 @@
           "name": "Philips Hue",
           "price": 59.99,
           "description": "Smart light bulb with customizable colors",
-          "image": "https://example.com/philips-hue.jpg",
+          "image": "https://m.media-amazon.com/images/I/61Oo2PWdjvL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Dimmer Switch",
               "price": 34.99,
               "description": "Control brightness with the dimmer switch",
-              "image": "https://example.com/hue-dimmer.jpg"
+              "image": "https://m.media-amazon.com/images/I/5134Diycx6L._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Motion Sensor",
               "price": 39.99,
               "description": "Automatically control lights with motion detection",
-              "image": "https://example.com/hue-motion.jpg"
+              "image": "https://m.media-amazon.com/images/I/51E6PcfbT0S._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -342,19 +342,19 @@
           "name": "LIFX Smart Bulb",
           "price": 79.99,
           "description": "Wi-Fi enabled smart bulb with color control",
-          "image": "https://example.com/lifx-bulb.jpg",
+          "image": "https://m.media-amazon.com/images/I/711WGqAccXL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Remote Control",
               "price": 29.99,
               "description": "Control your LIFX bulb remotely",
-              "image": "https://example.com/lifx-remote.jpg"
+              "image": "https://m.media-amazon.com/images/I/61k9tBbLtKL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Wall Mount",
               "price": 15.99,
               "description": "Mount your smart bulb control to the wall",
-              "image": "https://example.com/lifx-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/61OlcMnAsSL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -362,19 +362,19 @@
           "name": "Nanoleaf Light Panels",
           "price": 199.99,
           "description": "Modular smart lighting with touch controls",
-          "image": "https://example.com/nanoleaf-panels.jpg",
+          "image": "https://m.media-amazon.com/images/I/61Ej+NhroTL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Extension Kit",
               "price": 59.99,
               "description": "Expand your Nanoleaf panels",
-              "image": "https://example.com/nanoleaf-extension.jpg"
+              "image": "https://m.media-amazon.com/images/I/41betxuXzYL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Mounting Tape",
               "price": 12.99,
               "description": "Spare mounting tape for panels",
-              "image": "https://example.com/nanoleaf-tape.jpg"
+              "image": "https://m.media-amazon.com/images/I/71gueC-Cq3L._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -382,19 +382,19 @@
           "name": "Kasa Smart Bulb",
           "price": 49.99,
           "description": "Dimmable smart bulb with voice control",
-          "image": "https://example.com/kasa-bulb.jpg",
+          "image": "https://m.media-amazon.com/images/I/718of5mhfbL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Dimmer Switch",
               "price": 29.99,
               "description": "Control brightness remotely",
-              "image": "https://example.com/kasa-dimmer.jpg"
+              "image": "https://m.media-amazon.com/images/I/71S0-zkaFQL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Wall Plate",
               "price": 15.99,
               "description": "Decorative plate for smart switch",
-              "image": "https://example.com/kasa-plate.jpg"
+              "image": "https://m.media-amazon.com/images/I/61sg44dq7pL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -402,19 +402,19 @@
           "name": "Sengled Smart Bulb",
           "price": 39.99,
           "description": "Energy-efficient smart bulb with app control",
-          "image": "https://example.com/sengled-bulb.jpg",
+          "image": "https://m.media-amazon.com/images/I/71cORaWaIjL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Remote Control",
               "price": 24.99,
               "description": "Control brightness with a remote",
-              "image": "https://example.com/sengled-remote.jpg"
+              "image": "https://m.media-amazon.com/images/I/71iR7wPa0JL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Mounting Kit",
               "price": 19.99,
               "description": "Mount your smart bulb securely",
-              "image": "https://example.com/sengled-mount.jpg"
+              "image": "https://m.media-amazon.com/images/I/61po8t8nNJL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         }
@@ -427,19 +427,19 @@
           "name": "Nest Thermostat",
           "price": 249.99,
           "description": "Smart thermostat with energy-saving features",
-          "image": "https://example.com/nest-thermostat.jpg",
+          "image": "https://m.media-amazon.com/images/I/71JmuT56b0L._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Temperature Sensor",
               "price": 39.99,
               "description": "Add extra sensors for better temperature control",
-              "image": "https://example.com/nest-sensor.jpg"
+              "image": "https://m.media-amazon.com/images/I/51xwM0VDugL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Wall Plate",
               "price": 15.99,
               "description": "Decorative wall plate for better aesthetics",
-              "image": "https://example.com/nest-wall-plate.jpg"
+              "image": "https://m.media-amazon.com/images/I/41N++Klv2LL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -447,19 +447,19 @@
           "name": "Ecobee SmartThermostat",
           "price": 219.99,
           "description": "Smart thermostat with voice control",
-          "image": "https://example.com/ecobee.jpg",
+          "image": "https://m.media-amazon.com/images/I/618bkic-WJL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Room Sensor",
               "price": 39.99,
               "description": "Add sensors to control room temperature accurately",
-              "image": "https://example.com/ecobee-sensor.jpg"
+              "image": "https://m.media-amazon.com/images/I/41o28svwQBL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Mounting Bracket",
               "price": 19.99,
               "description": "Secure mounting for your Ecobee thermostat",
-              "image": "https://example.com/ecobee-bracket.jpg"
+              "image": "https://m.media-amazon.com/images/I/51jcEmmcOkL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -467,19 +467,19 @@
           "name": "Honeywell Home T9",
           "price": 199.99,
           "description": "Smart thermostat with remote room sensors",
-          "image": "https://example.com/honeywell-t9.jpg",
+          "image": "https://m.media-amazon.com/images/I/41dy9Prc6GL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Room Sensor",
               "price": 34.99,
               "description": "Control temperature in individual rooms",
-              "image": "https://example.com/honeywell-sensor.jpg"
+              "image": "https://m.media-amazon.com/images/I/51i95ZvCeJL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Mounting Plate",
               "price": 12.99,
               "description": "Decorative wall plate for cleaner look",
-              "image": "https://example.com/honeywell-plate.jpg"
+              "image": "https://m.media-amazon.com/images/I/51qHTC8kUPL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -487,19 +487,19 @@
           "name": "Emerson Sensi",
           "price": 169.99,
           "description": "Wi-Fi thermostat with smart home integration",
-          "image": "https://example.com/emerson-sensi.jpg",
+          "image": "https://m.media-amazon.com/images/I/51Ceejf+6kL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Wall Plate",
               "price": 9.99,
               "description": "Decorative wall plate for better aesthetics",
-              "image": "https://example.com/emerson-wall-plate.jpg"
+              "image": "https://m.media-amazon.com/images/I/61tdHY7EmyL._AC_UL640_FMwebp_QL65_.jpg"
             },
             {
               "name": "Battery Pack",
               "price": 19.99,
               "description": "Extended battery for long usage",
-              "image": "https://example.com/emerson-battery.jpg"
+              "image": "https://m.media-amazon.com/images/I/61fFaLLZBgL._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         },
@@ -507,19 +507,19 @@
           "name": "Lux Kono",
           "price": 199.99,
           "description": "Stylish smart thermostat with interchangeable faceplates",
-          "image": "https://example.com/lux-kono.jpg",
+          "image": "https://m.media-amazon.com/images/I/71FWis7QhPL._AC_UL640_FMwebp_QL65_.jpg",
           "accessories": [
             {
               "name": "Faceplate",
               "price": 14.99,
               "description": "Customizable faceplate for stylish looks",
-              "image": "https://example.com/lux-faceplate.jpg"
+              "image": "https://m.media-amazon.com/images/I/51ndZXgUUwS._AC_SR292,236_QL70_.jpg"
             },
             {
               "name": "Remote Sensor",
               "price": 29.99,
               "description": "Add sensors for room-based control",
-              "image": "https://example.com/lux-sensor.jpg"
+              "image": "https://m.media-amazon.com/images/I/613C11Sym5L._AC_UL640_FMwebp_QL65_.jpg"
             }
           ]
         }
