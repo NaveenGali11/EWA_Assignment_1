@@ -1,12 +1,16 @@
-import {FC, MouseEventHandler} from "react";
+import {FC} from "react";
 import {Button, Card, CardBody, CardText, CardTitle} from "reactstrap";
-import {SuccessfullProduct} from "../../sevices/ProductService";
 
-interface ProductItemProps extends SuccessfullProduct {
-    onViewClick: MouseEventHandler<HTMLButtonElement>,
+interface ProductAccessory {
+    id: string,
+    product_id: string,
+    price: number,
+    name: string,
+    description: string,
+    imageUrl: string
 }
 
-const ProductItem: FC<ProductItemProps> = ({name, imageUrl, description, price, onViewClick}) => {
+const AccessoryItem: FC<ProductAccessory> = ({name, description, price, imageUrl}) => {
     return (
         <Card
             style={{
@@ -15,7 +19,7 @@ const ProductItem: FC<ProductItemProps> = ({name, imageUrl, description, price, 
             }}
         >
             <img
-                alt="Sample"
+                alt="image"
                 src={imageUrl ? imageUrl : "https://picsum.photos/300/200"}
                 style={{
                     height: '200px',
@@ -32,12 +36,12 @@ const ProductItem: FC<ProductItemProps> = ({name, imageUrl, description, price, 
                 <CardText>
                     $ {price}
                 </CardText>
-                <Button color="primary" onClick={onViewClick}>
-                    View
+                <Button color="primary">
+                    Add To Cart
                 </Button>
             </CardBody>
         </Card>
     );
 };
 
-export default ProductItem;
+export default AccessoryItem;
