@@ -15,7 +15,7 @@ const ProductItem: FC<ProductItemProps> = ({name, imageUrl, description, price, 
             }}
         >
             <img
-                alt="Sample"
+                alt={name}
                 src={imageUrl ? imageUrl : "https://picsum.photos/300/200"}
                 style={{
                     height: '200px',

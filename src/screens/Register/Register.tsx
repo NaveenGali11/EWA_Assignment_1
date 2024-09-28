@@ -17,6 +17,7 @@ const Register: React.FC = () => {
         console.log("Registering user:", { username, email, userType, password });
         try {
             const response = await registerUser(username,password,email,userType);
+            localStorage.setItem("user_id", response.user_id);
             localStorage.setItem("token", response.token);
             localStorage.setItem("username", response.username);
             localStorage.setItem("userType", response.userType);
@@ -61,7 +62,7 @@ const Register: React.FC = () => {
                     >
                         <option value="admin">Admin</option>
                         <option value="customer">Customer</option>
-                        <option value="sales_manager">Sales Manager</option>
+                        <option value="sales_man">Sales Manager</option>
                         <option value="delivery_staff">Delivery Staff</option>
                     </select>
                 </div>

@@ -9,6 +9,11 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AddProduct from "./screens/AddProduct/AddProduct";
 import ViewProduct from "./components/ViewProduct/ViewProduct";
 import AddAccessory from "./screens/AddAccessory/AddAccessory";
+import Cart from "./screens/Cart/Cart";
+import Orders from "./screens/Orders/Orders";
+import OrderOverview from "./screens/OrderOverview/OrderOverview";
+import FilteredProductsPage from "./screens/FilteredProducts";
+import Stats from "./screens/Stats";
 
 const App = () => {
     return (
@@ -28,6 +33,14 @@ const App = () => {
                         }
                     />
                     <Route
+                        path="/stats"
+                        element={
+                            <ProtectedRoute adminRoute={true}>
+                                <Stats />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
                         path="/addaccessory"
                         element={
                             <ProtectedRoute adminRoute={true}>
@@ -35,8 +48,34 @@ const App = () => {
                             </ProtectedRoute>
                         }
                     />
+                    <Route
+                        path="/orders"
+                        element={
+                            <ProtectedRoute adminRoute={true}>
+                                <Orders />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/orders/:confirmation_number"
+                        element={
+                            <ProtectedRoute adminRoute={true}>
+                                <OrderOverview />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/products/most-reviewed" element={<FilteredProductsPage filterType="most-reviewed" />} />
+                    <Route path="/products/top-rated" element={<FilteredProductsPage filterType="top-rated" />} />
+                    <Route path="/products/trending" element={<FilteredProductsPage filterType="trending" />} />
                     <Route path="/products/:id" element={<ViewProduct/>}/>
-
+                    <Route
+                        path="/cart"
+                        element={
+                            <ProtectedRoute adminRoute={false}>
+                                <Cart />
+                            </ProtectedRoute>
+                        }
+                    />
                 </Routes>
             </Router>
         </div>

@@ -7,10 +7,11 @@ interface ProductAccessory {
     price: number,
     name: string,
     description: string,
-    imageUrl: string
+    imageUrl: string,
+   onClick: React.MouseEventHandler<HTMLButtonElement> 
 }
 
-const AccessoryItem: FC<ProductAccessory> = ({name, description, price, imageUrl}) => {
+const AccessoryItem: FC<ProductAccessory> = ({name, description, price, imageUrl,onClick}) => {
     return (
         <Card
             style={{
@@ -36,7 +37,7 @@ const AccessoryItem: FC<ProductAccessory> = ({name, description, price, imageUrl
                 <CardText>
                     $ {price}
                 </CardText>
-                <Button color="primary">
+                <Button color="primary" onClick={onClick}>
                     Add To Cart
                 </Button>
             </CardBody>

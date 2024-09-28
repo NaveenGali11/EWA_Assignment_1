@@ -1,0 +1,31 @@
+.order-summary-card,
+.order-item-card,
+.price-breakdown-card {
+  margin-bottom: 20px;
+}
+
+.order-item-card img {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.order-view-page .order-summary-card h3,
+.order-view-page .price-breakdown-card h4 {
+  margin-bottom: 15px;
+}
+
+.order-view-page .order-item-card h5 {
+  margin-bottom: 10px;
+}
+
+.order-view-page .order-item-card p {
+  margin-bottom: 8px;
+}
+
+.order-view-page .img-fluid {
+  border-radius: 4px;
+}
+
+.order-view-page .action-button {
+  margin-right: 10px;
+}
