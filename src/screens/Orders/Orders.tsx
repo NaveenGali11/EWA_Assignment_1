@@ -7,10 +7,14 @@ import {
   ModalBody,
   ModalFooter,
   Spinner,
-  Input
+  Input,
 } from "reactstrap";
 import axios from "axios";
-import { ORDERS_URL, ORDER_CANCEL_URL, ORDER_STATUS_URL } from "../../utils/urlUtils";
+import {
+  ORDERS_URL,
+  ORDER_CANCEL_URL,
+  ORDER_STATUS_URL,
+} from "../../utils/urlUtils";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -32,10 +36,12 @@ const Orders: React.FC = () => {
   const [cancelLoading, setCancelLoading] = useState<boolean>(false);
   const [showDetailsModal, setShowDetailsModal] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedStatus, setSelectedStatus] = useState<{ [key: string]: string }>({}); // Store selected statuses
+  const [selectedStatus, setSelectedStatus] = useState<{
+    [key: string]: string;
+  }>({}); // Store selected statuses
 
-  const isSalesman = localStorage.getItem('user_type') === 'salesman'; // Check if the user is a salesman
-  const isAdmin = localStorage.getItem('user_type') === 'admin'; // Check if the user is a salesman
+  const isSalesman = localStorage.getItem("userType") === "sales_man"; // Check if the user is a salesman
+  const isAdmin = localStorage.getItem("userType") === "admin"; // Check if the user is a salesman
 
   // Fetch orders
   const fetchOrders = async () => {
@@ -62,9 +68,12 @@ const Orders: React.FC = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response: any = await axios.get(`${ORDER_STATUS_URL}/${confirmation_number}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response: any = await axios.get(
+        `${ORDER_STATUS_URL}/${confirmation_number}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setSelectedOrder(response.data);
       setShowDetailsModal(true);
     } catch (error) {
@@ -86,15 +95,19 @@ const Orders: React.FC = () => {
       Swal.fire({
         title: "Order Cancelled Successfully!",
         icon: "success",
-        text: "Order Cancelled and Money will be refunded in 3-5 days."
+        text: "Order Cancelled and Money will be refunded in 3-5 days.",
       });
-      setOrders(orders.filter(order => order.confirmation_number !== confirmation_number));
+      setOrders(
+        orders.filter(
+          (order) => order.confirmation_number !== confirmation_number
+        )
+      );
       setShowDetailsModal(false);
     } catch (error) {
       Swal.fire({
         title: "Order Cancellation Failed!",
         icon: "error",
-        text: "Order Cancellation Failed and Try Returning the Item post delivery."
+        text: "Order Cancellation Failed and Try Returning the Item post delivery.",
       });
     } finally {
       setCancelLoading(false);
@@ -105,21 +118,25 @@ const Orders: React.FC = () => {
   const handleUpdateOrderStatus = async (confirmation_number: string) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`${ORDER_STATUS_URL}/${confirmation_number}`, {
-        status: selectedStatus[confirmation_number]
-      }, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.put(
+        `${ORDER_STATUS_URL}/${confirmation_number}`,
+        {
+          status: selectedStatus[confirmation_number],
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       Swal.fire({
         title: "Order Status Updated!",
         icon: "success",
-        text: "Order status updated successfully."
+        text: "Order status updated successfully.",
       });
     } catch (error) {
       Swal.fire({
         title: "Failed to Update Status!",
         icon: "error",
-        text: "Unable to update order status."
+        text: "Unable to update order status.",
       });
     }
   };
@@ -130,13 +147,17 @@ const Orders: React.FC = () => {
       {loading ? (
         <Spinner />
       ) : orders.length === 0 ? (
-        <p>{isSalesman || isAdmin ? "No orders to display." : "You have no orders yet."}</p>
+        <p>
+          {isSalesman || isAdmin
+            ? "No orders to display."
+            : "You have no orders yet."}
+        </p>
       ) : (
         <Table responsive>
           <thead>
             <tr>
               <th>Order #</th>
-              {isSalesman && <th>Customer</th>}
+              {(isAdmin || isSalesman) && <th>Customer</th>}
               <th>Total</th>
               <th>Delivery Type</th>
               <th>Delivery Date</th>
@@ -145,45 +166,61 @@ const Orders: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map(order => (
+            {orders.map((order) => (
               <tr key={order.id}>
                 <td>
                   <Link to={`/orders/${order.confirmation_number}`}>
                     {order.confirmation_number}
                   </Link>
                 </td>
-                {isSalesman || isAdmin && <td>{order.customer_name}</td>}
+                {(isAdmin || isSalesman) && <td>{order.customer_name}</td>}
                 <td>${order.total}</td>
-                <td>{order.delivery_type === "home_delivery" ? "Home Delivery" : "Store Pickup"}</td>
+                <td>
+                  {order.delivery_type === "home_delivery"
+                    ? "Home Delivery"
+                    : "Store Pickup"}
+                </td>
                 <td>{new Date(order.delivery_date).toLocaleDateString()}</td>
                 <td>
                   {isSalesman || isAdmin ? (
                     <Input
                       type="select"
-                      value={selectedStatus[order.confirmation_number] || order.status}
-                      onChange={(e) => setSelectedStatus({ ...selectedStatus, [order.confirmation_number]: e.target.value })}
+                      value={
+                        selectedStatus[order.confirmation_number] ||
+                        order.status
+                      }
+                      onChange={(e) =>
+                        setSelectedStatus({
+                          ...selectedStatus,
+                          [order.confirmation_number]: e.target.value,
+                        })
+                      }
+                      disabled={order.status === "delivered"}
                     >
-                      <option value="Processing">Processing</option>
-                      <option value="Shipped">Shipped</option>
-                      <option value="Delivered">Delivered</option>
-                      <option value="Cancelled">Cancelled</option>
+                      <option value="pending">Pending</option>
+                      <option value="shipped">Shipped</option>
+                      <option value="delivered">Delivered</option>
                     </Input>
                   ) : (
                     order.status || "Pending"
                   )}
                 </td>
                 <td>
-                  {isSalesman || isAdmin ? (
+                  {(isSalesman || isAdmin) && order.status !== "delivered" ? (
                     <Button
                       color="info"
-                      onClick={() => handleUpdateOrderStatus(order.confirmation_number)}
+                      onClick={() =>
+                        handleUpdateOrderStatus(order.confirmation_number)
+                      }
                     >
                       Update Status
                     </Button>
-                  ) : (
+                  ) : order.status === "delivered" ? null : (
                     <Button
                       color="danger"
-                      onClick={() => handleCancelOrder(order.confirmation_number)}
+                      onClick={() =>
+                        handleCancelOrder(order.confirmation_number)
+                      }
                       disabled={cancelLoading}
                     >
                       {cancelLoading ? <Spinner size="sm" /> : "Cancel Order"}
@@ -196,7 +233,10 @@ const Orders: React.FC = () => {
         </Table>
       )}
 
-      <Modal isOpen={showDetailsModal} toggle={() => setShowDetailsModal(false)}>
+      <Modal
+        isOpen={showDetailsModal}
+        toggle={() => setShowDetailsModal(false)}
+      >
         <ModalHeader toggle={() => setShowDetailsModal(false)}>
           Order Details
         </ModalHeader>

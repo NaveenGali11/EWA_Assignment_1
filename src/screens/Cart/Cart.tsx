@@ -15,7 +15,12 @@ import {
   ModalFooter,
 } from "reactstrap";
 import axios from "axios";
-import { CART_URL, PLACE_ORDER_URL, STORE_LOCATIONS_URL, IMAGES_BASE_URL } from "../../utils/urlUtils";
+import {
+  CART_URL,
+  PLACE_ORDER_URL,
+  STORE_LOCATIONS_URL,
+  IMAGES_BASE_URL,
+} from "../../utils/urlUtils";
 import "./Cart.css";
 import Swal from "sweetalert2";
 
@@ -33,7 +38,7 @@ interface CartTotals {
   tax: string;
   delivery_fee: string;
   total: string;
-  discount ?: string;
+  discount?: string;
 }
 
 interface StoreLocation {
@@ -51,24 +56,66 @@ const Cart: React.FC = () => {
   const [loading, setLoading] = useState<{ [key: number]: boolean }>({});
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   const [deliveryType, setDeliveryType] = useState("home_delivery");
-  const [address, setAddress] = useState("");
-  const [selectedStore, setSelectedStore] = useState<number | null>(null);
-  const [storeLocations, setStoreLocations] = useState<StoreLocation[]>([]);
   const [addressDetails, setAddressDetails] = useState({
     address1: "",
     address2: "",
     city: "",
     state: "",
-    zip: ""
+    zip: "",
   });
+  const [selectedStore, setSelectedStore] = useState<number | null>(null);
+  const [storeLocations, setStoreLocations] = useState<StoreLocation[]>([]);
   const [customerDetails, setCustomerDetails] = useState({
     name: "",
     email: "",
     payment_method: "credit_card",
     card_number: "",
     card_expiry: "",
-    card_cvv: ""
+    card_cvv: "",
   });
+
+  const [errors, setErrors] = useState({
+    card_number: "",
+    card_expiry: "",
+    card_cvv: "",
+  });
+
+  const validateCardNumber = (number: string) => {
+    const regex = /^[0-9]{16}$/; // Regex for 16-digit card number
+    return regex.test(number);
+  };
+
+  const validateCardExpiry = (expiry: string) => {
+    const regex = /^(0[1-9]|1[0-2])\/\d{2}$/; // Regex for MM/YY format
+    return regex.test(expiry);
+  };
+
+  const validateCardCVV = (cvv: string) => {
+    const regex = /^[0-9]{3}$/; // Regex for 3-digit CVV
+    return regex.test(cvv);
+  };
+
+  const handlePayment = () => {
+    const newErrors = {
+      card_number: validateCardNumber(customerDetails.card_number)
+        ? ""
+        : "Card number must be 16 digits.",
+      card_expiry: validateCardExpiry(customerDetails.card_expiry)
+        ? ""
+        : "Expiry date must be in MM/YY format.",
+      card_cvv: validateCardCVV(customerDetails.card_cvv)
+        ? ""
+        : "CVV must be 3 digits.",
+    };
+
+    setErrors(newErrors);
+
+    if (!newErrors.card_number && !newErrors.card_expiry && !newErrors.card_cvv) {
+      Swal.fire("Payment processed successfully", "", "success");
+    } else {
+      Swal.fire("Invalid payment details", "Please correct the errors.", "error");
+    }
+  };
 
   // Fetch cart items from the backend
   const fetchCartItems = async () => {
@@ -87,7 +134,7 @@ const Cart: React.FC = () => {
         tax: response.data.tax,
         delivery_fee: response.data.delivery_fee,
         total: response.data.total,
-        discount: response.data.discount
+        discount: response.data.discount,
       });
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -97,23 +144,16 @@ const Cart: React.FC = () => {
   // Fetch store locations from the backend
   const fetchStoreLocations = async () => {
     try {
-      const response:any = await axios.get(STORE_LOCATIONS_URL);
+      const response: any = await axios.get(STORE_LOCATIONS_URL);
       setStoreLocations(response.data); // Set store locations from the backend
     } catch (error) {
       console.error("Error fetching store locations:", error);
     }
   };
 
-  // Open the checkout modal and fetch store locations (if needed)
-  const openCheckoutModal = () => {
-    setShowCheckoutModal(true);
-    if (storeLocations.length === 0) {
-      fetchStoreLocations(); // Fetch store locations only once
-    }
-  };
-
   useEffect(() => {
     fetchCartItems();
+    fetchStoreLocations();
   }, []);
 
   const handleQuantityChange = async (id: number, newQuantity: number) => {
@@ -148,53 +188,52 @@ const Cart: React.FC = () => {
   };
 
   const handlePlaceOrder = async () => {
-  try {
-    const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("user_id");
+    try {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("user_id");
 
-    const orderData = {
-      user_id: userId,
-      cart_items: cartItems.map((item) => ({
-        product_id: item.item_type === "Product" ? item.id : null,
-        accessory_id: item.item_type === "Accessory" ? item.id : null,
-        quantity: item.quantity,
-        price: item.price,
-      })),
-      delivery_type: deliveryType,
-      store_id: deliveryType === "store_pickup" ? selectedStore : null,
-      customer_details: {
-        name: customerDetails.name,
-        email: customerDetails.email,
-        address1: deliveryType === "home_delivery" ? addressDetails.address1 : null,
-        address2: deliveryType === "home_delivery" ? addressDetails.address2 : null,
-        city: deliveryType === "home_delivery" ? addressDetails.city : null,
-        state: deliveryType === "home_delivery" ? addressDetails.state : null,
-        zip: deliveryType === "home_delivery" ? addressDetails.zip : null,
-        payment_method: customerDetails.payment_method,
-        card_number: customerDetails.payment_method === "credit_card" ? customerDetails.card_number : null,
-        card_expiry: customerDetails.payment_method === "credit_card" ? customerDetails.card_expiry : null,
-        card_cvv: customerDetails.payment_method === "credit_card" ? customerDetails.card_cvv : null
-      },
-    };
+      const orderData = {
+        user_id: userId,
+        cart_items: cartItems.map((item) => ({
+          product_id: item.item_type === "Product" ? item.id : null,
+          accessory_id: item.item_type === "Accessory" ? item.id : null,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        delivery_type: deliveryType,
+        store_id: deliveryType === "store_pickup" ? selectedStore : null,
+        customer_details: {
+          name: customerDetails.name,
+          email: customerDetails.email,
+          address1: deliveryType === "home_delivery" ? addressDetails.address1 : null,
+          address2: deliveryType === "home_delivery" ? addressDetails.address2 : null,
+          city: deliveryType === "home_delivery" ? addressDetails.city : null,
+          state: deliveryType === "home_delivery" ? addressDetails.state : null,
+          zip: deliveryType === "home_delivery" ? addressDetails.zip : null,
+          payment_method: customerDetails.payment_method,
+          card_number: customerDetails.payment_method === "credit_card" ? customerDetails.card_number : null,
+          card_expiry: customerDetails.payment_method === "credit_card" ? customerDetails.card_expiry : null,
+          card_cvv: customerDetails.payment_method === "credit_card" ? customerDetails.card_cvv : null,
+        },
+      };
 
-    const response: any = await axios.post(PLACE_ORDER_URL, orderData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+      const response: any = await axios.post(PLACE_ORDER_URL, orderData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    Swal.fire({
-      title: "Order Placed Successfully",
-      icon: "success",
-      text: `Order Placed With Status Number : ${response.data.confirmation_number}`
-    });
-    setShowCheckoutModal(false);
-    fetchCartItems(); // Clear cart after placing the order
-  } catch (error) {
-    console.error("Error placing order:", error);
-  }
+      Swal.fire({
+        title: "Order Placed Successfully",
+        icon: "success",
+        text: `Order Placed With Status Number : ${response.data.confirmation_number}`,
+      });
+      setShowCheckoutModal(false);
+      fetchCartItems(); // Clear cart after placing the order
+    } catch (error) {
+      console.error("Error placing order:", error);
+    }
   };
-
 
   return (
     <Container className="cart-page">
@@ -291,7 +330,7 @@ const Cart: React.FC = () => {
                   <p>Discount (3%): ${totals.discount}</p>
                   <hr />
                   <h2>Total: ${totals.total}</h2>
-                  <Button color="primary" onClick={openCheckoutModal}>
+                  <Button color="primary" onClick={() => setShowCheckoutModal(true)}>
                     Proceed to Checkout
                   </Button>
                 </CardBody>
@@ -303,9 +342,7 @@ const Cart: React.FC = () => {
 
       {/* Checkout Modal */}
       <Modal isOpen={showCheckoutModal} toggle={() => setShowCheckoutModal(false)}>
-        <ModalHeader toggle={() => setShowCheckoutModal(false)}>
-          Checkout
-        </ModalHeader>
+        <ModalHeader toggle={() => setShowCheckoutModal(false)}>Checkout</ModalHeader>
         <ModalBody>
           <h5>Delivery Type</h5>
           <Input
@@ -319,41 +356,66 @@ const Cart: React.FC = () => {
 
           {deliveryType === "home_delivery" ? (
             <>
-             <h5>Address Line 1</h5>
-    <Input
-      type="text"
-      placeholder="Enter Address Line 1"
-      value={addressDetails.address1}
-      onChange={(e) => setAddressDetails((prev) => ({ ...prev, address1: e.target.value }))}
-    />
-    <h5>Address Line 2</h5>
-    <Input
-      type="text"
-      placeholder="Enter Address Line 2"
-      value={addressDetails.address2}
-      onChange={(e) => setAddressDetails((prev) => ({ ...prev, address2: e.target.value }))}
-    />
-    <h5>City</h5>
-    <Input
-      type="text"
-      placeholder="Enter City"
-      value={addressDetails.city}
-      onChange={(e) => setAddressDetails((prev) => ({ ...prev, city: e.target.value }))}
-    />
-    <h5>State</h5>
-    <Input
-      type="text"
-      placeholder="Enter State"
-      value={addressDetails.state}
-      onChange={(e) => setAddressDetails((prev) => ({ ...prev, state: e.target.value }))}
-    />
-    <h5>ZIP Code</h5>
-    <Input
-      type="text"
-      placeholder="Enter ZIP Code"
-      value={addressDetails.zip}
-      onChange={(e) => setAddressDetails((prev) => ({ ...prev, zip: e.target.value }))}
-    />
+              <h5>Address Line 1</h5>
+              <Input
+                type="text"
+                placeholder="Enter Address Line 1"
+                value={addressDetails.address1}
+                onChange={(e) =>
+                  setAddressDetails((prev) => ({
+                    ...prev,
+                    address1: e.target.value,
+                  }))
+                }
+              />
+              <h5>Address Line 2</h5>
+              <Input
+                type="text"
+                placeholder="Enter Address Line 2"
+                value={addressDetails.address2}
+                onChange={(e) =>
+                  setAddressDetails((prev) => ({
+                    ...prev,
+                    address2: e.target.value,
+                  }))
+                }
+              />
+              <h5>City</h5>
+              <Input
+                type="text"
+                placeholder="Enter City"
+                value={addressDetails.city}
+                onChange={(e) =>
+                  setAddressDetails((prev) => ({
+                    ...prev,
+                    city: e.target.value,
+                  }))
+                }
+              />
+              <h5>State</h5>
+              <Input
+                type="text"
+                placeholder="Enter State"
+                value={addressDetails.state}
+                onChange={(e) =>
+                  setAddressDetails((prev) => ({
+                    ...prev,
+                    state: e.target.value,
+                  }))
+                }
+              />
+              <h5>ZIP Code</h5>
+              <Input
+                type="text"
+                placeholder="Enter ZIP Code"
+                value={addressDetails.zip}
+                onChange={(e) =>
+                  setAddressDetails((prev) => ({
+                    ...prev,
+                    zip: e.target.value,
+                  }))
+                }
+              />
             </>
           ) : (
             <>
@@ -378,20 +440,29 @@ const Cart: React.FC = () => {
             type="text"
             placeholder="Name"
             value={customerDetails.name}
-            onChange={(e) => setCustomerDetails((prev) => ({ ...prev, name: e.target.value }))}
+            onChange={(e) =>
+              setCustomerDetails((prev) => ({ ...prev, name: e.target.value }))
+            }
           />
           <Input
             type="email"
             placeholder="Email"
             value={customerDetails.email}
-            onChange={(e) => setCustomerDetails((prev) => ({ ...prev, email: e.target.value }))}
+            onChange={(e) =>
+              setCustomerDetails((prev) => ({ ...prev, email: e.target.value }))
+            }
           />
 
           <h5>Payment Method</h5>
           <Input
             type="select"
             value={customerDetails.payment_method}
-            onChange={(e) => setCustomerDetails((prev) => ({ ...prev, payment_method: e.target.value }))}
+            onChange={(e) =>
+              setCustomerDetails((prev) => ({
+                ...prev,
+                payment_method: e.target.value,
+              }))
+            }
           >
             <option value="credit_card">Credit Card</option>
             <option value="paypal">PayPal</option>
@@ -404,22 +475,48 @@ const Cart: React.FC = () => {
                 type="text"
                 placeholder="Enter your card number"
                 value={customerDetails.card_number}
-                onChange={(e) => setCustomerDetails((prev) => ({ ...prev, card_number: e.target.value }))}
+                onChange={(e) =>
+                  setCustomerDetails((prev) => ({
+                    ...prev,
+                    card_number: e.target.value,
+                  }))
+                }
               />
+              {errors.card_number && (
+                <p style={{ color: "red" }}>{errors.card_number}</p>
+              )}
+
               <h5>Card Expiry</h5>
               <Input
                 type="text"
                 placeholder="MM/YY"
                 value={customerDetails.card_expiry}
-                onChange={(e) => setCustomerDetails((prev) => ({ ...prev, card_expiry: e.target.value }))}
+                onChange={(e) =>
+                  setCustomerDetails((prev) => ({
+                    ...prev,
+                    card_expiry: e.target.value,
+                  }))
+                }
               />
+              {errors.card_expiry && (
+                <p style={{ color: "red" }}>{errors.card_expiry}</p>
+              )}
+
               <h5>Card CVV</h5>
               <Input
                 type="text"
                 placeholder="Enter CVV"
                 value={customerDetails.card_cvv}
-                onChange={(e) => setCustomerDetails((prev) => ({ ...prev, card_cvv: e.target.value }))}
+                onChange={(e) =>
+                  setCustomerDetails((prev) => ({
+                    ...prev,
+                    card_cvv: e.target.value,
+                  }))
+                }
               />
+              {errors.card_cvv && (
+                <p style={{ color: "red" }}>{errors.card_cvv}</p>
+              )}
             </>
           )}
         </ModalBody>

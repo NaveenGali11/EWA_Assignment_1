@@ -59,7 +59,7 @@ const ProductGrid: React.FC = () => {
       {/* Loop through each category */}
       <h2>Trending Products</h2>
       <Row>
-        {trendingProducts.map((tp: any, index) => (
+        {trendingProducts.splice(3).map((tp: any, index) => (
           <Col
             lg="3"
             sm="6"

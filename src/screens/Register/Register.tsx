@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Register.css'; // We'll define the styles for centering the form here
 import { registerUser } from '../../sevices/LoginService';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Register: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -16,12 +17,17 @@ const Register: React.FC = () => {
         // Handle registration logic here
         console.log("Registering user:", { username, email, userType, password });
         try {
-            const response = await registerUser(username,password,email,userType);
-            localStorage.setItem("user_id", response.user_id);
-            localStorage.setItem("token", response.token);
-            localStorage.setItem("username", response.username);
-            localStorage.setItem("userType", response.userType);
-            navigate("/");
+            const response = await registerUser(username,password,email,userType).then(() => {
+                Swal.fire({
+                    title: "User Successfully Registered",
+                    icon: "success",
+                    text: "Registration Successfull"
+                }).then(() => {
+                    console.log("RES :_ ",response);
+                    
+                    navigate("/login")
+                })
+            })
         } catch (e: any) {
             setError(e.message);
         }

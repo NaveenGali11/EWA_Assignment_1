@@ -48,9 +48,6 @@ function Header() {
               <NavLink href="/products/top-rated">Top Rated</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/products/most-reviewed">Most Reviewed</NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink href="/products/trending">Trending</NavLink>
             </NavItem>
             {userType === "admin" ? (
@@ -58,9 +55,7 @@ function Header() {
                 <NavLink href="/addproduct/">Add Product</NavLink>
               </NavItem>
             ) : (
-              <NavItem>
-                <NavLink href="/track/">Track Your Order</NavLink>
-              </NavItem>
+             <></>
             )}
             {userType === "admin" ? (
               <NavItem>

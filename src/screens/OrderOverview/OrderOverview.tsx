@@ -21,7 +21,12 @@ import {
   IMAGES_BASE_URL,
   REVIEWS_URL,
 } from "../../utils/urlUtils";
-import { FaShippingFast, FaBoxOpen, FaCheckCircle } from "react-icons/fa";
+import {
+  FaShippingFast,
+  FaBoxOpen,
+  FaCheckCircle,
+  FaClock,
+} from "react-icons/fa";
 import Swal from "sweetalert2";
 import "./OrderOverview.css";
 
@@ -45,7 +50,11 @@ interface OrderDetails {
   delivery_type: string;
   delivery_date: string;
   customer_name: string;
-  customer_address: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
   payment_method: string;
   order_date: string;
   items: OrderItem[];
@@ -153,7 +162,7 @@ const OrderOverview: React.FC = () => {
         }
       );
 
-      console.log("RESPO :_ ",response);
+      console.log("RESPO :_ ", response);
 
       Swal.fire({
         title: "Review Submitted",
@@ -195,29 +204,16 @@ const OrderOverview: React.FC = () => {
                   : "Store Pickup"}
               </p>
               <p>
-                <strong>Delivery Date:</strong> {new Date(order.delivery_date).toLocaleDateString()}
+                <strong>Delivery Date:</strong>{" "}
+                {new Date(order.delivery_date).toLocaleDateString()}
               </p>
               <p>
                 <strong>Total:</strong> ${order.total}
               </p>
               {order.delivery_type === "home_delivery" && (
                 <p>
-                  <strong>Delivery Address:</strong> {order.customer_address}
+                  <strong>Delivery Address:</strong> {order.address1 + "," + order.address2 + "," + order.city}
                 </p>
-              )}
-              {isSalesman && (
-                <FormGroup>
-                  <label>Update Order Status</label>
-                  <Input
-                    type="select"
-                    value={status}
-                    onChange={(e) => handleStatusChange(e.target.value)}
-                  >
-                    <option value="pending">Pending</option>
-                    <option value="shipped">Shipped</option>
-                    <option value="delivered">Delivered</option>
-                  </Input>
-                </FormGroup>
               )}
             </CardBody>
           </Card>
@@ -252,6 +248,10 @@ const OrderOverview: React.FC = () => {
                       {status === "delivered" ? (
                         <span style={{ color: "green" }}>
                           <FaCheckCircle /> Delivered
+                        </span>
+                      ) : status === "pending" ? (
+                        <span style={{ color: "blue" }}>
+                          <FaClock /> Pending
                         </span>
                       ) : (
                         <span style={{ color: "orange" }}>
@@ -341,7 +341,10 @@ const OrderOverview: React.FC = () => {
           )}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => submitReview(reviewProduct?.manufacturer)}>
+          <Button
+            color="primary"
+            onClick={() => submitReview(reviewProduct?.manufacturer)}
+          >
             Submit Review
           </Button>
           <Button color="secondary" onClick={() => setIsReviewModalOpen(false)}>
