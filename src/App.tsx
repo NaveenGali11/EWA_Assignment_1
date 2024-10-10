@@ -14,6 +14,8 @@ import Orders from "./screens/Orders/Orders";
 import OrderOverview from "./screens/OrderOverview/OrderOverview";
 import FilteredProductsPage from "./screens/FilteredProducts";
 import Stats from "./screens/Stats";
+import InventoryReport from "./screens/InventoryReport";
+import SalesReport from "./screens/SalesReport";
 
 const App = () => {
     return (
@@ -36,7 +38,7 @@ const App = () => {
                         path="/stats"
                         element={
                             <ProtectedRoute adminRoute={true}>
-                                <Stats />
+                                <Stats/>
                             </ProtectedRoute>
                         }
                     />
@@ -48,11 +50,21 @@ const App = () => {
                             </ProtectedRoute>
                         }
                     />
+                    <Route path="/inventory-report" element={
+                        <ProtectedRoute adminRoute={true}>
+                            <InventoryReport/>
+                        </ProtectedRoute>
+                    }/>
+                    <Route path="/sales-report" element={
+                        <ProtectedRoute adminRoute={true}>
+                            <SalesReport/>
+                        </ProtectedRoute>
+                    }/>
                     <Route
                         path="/orders"
                         element={
                             <ProtectedRoute adminRoute={true}>
-                                <Orders />
+                                <Orders/>
                             </ProtectedRoute>
                         }
                     />
@@ -60,19 +72,19 @@ const App = () => {
                         path="/orders/:confirmation_number"
                         element={
                             <ProtectedRoute adminRoute={true}>
-                                <OrderOverview />
+                                <OrderOverview/>
                             </ProtectedRoute>
                         }
                     />
-                    <Route path="/products/most-reviewed" element={<FilteredProductsPage filterType="most-reviewed" />} />
-                    <Route path="/products/top-rated" element={<FilteredProductsPage filterType="top-rated" />} />
-                    <Route path="/products/trending" element={<FilteredProductsPage filterType="trending" />} />
+                    <Route path="/products/most-reviewed" element={<FilteredProductsPage filterType="most-reviewed"/>}/>
+                    <Route path="/products/top-rated" element={<FilteredProductsPage filterType="top-rated"/>}/>
+                    <Route path="/products/trending" element={<FilteredProductsPage filterType="trending"/>}/>
                     <Route path="/products/:id" element={<ViewProduct/>}/>
                     <Route
                         path="/cart"
                         element={
                             <ProtectedRoute adminRoute={false}>
-                                <Cart />
+                                <Cart/>
                             </ProtectedRoute>
                         }
                     />
