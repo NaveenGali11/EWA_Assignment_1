@@ -16,7 +16,6 @@ const ORDERS_URL = `${BASE_URL}/orders`; // For placing and fetching orders
 
 const SALES_REPORT_URL = ORDERS_URL + "/salesreport";
 
-
 // URL for getting the status of a specific order
 const ORDER_STATUS_URL = `${BASE_URL}/orders/status`; // Use /status/:confirmation_number
 
@@ -25,27 +24,42 @@ const STATS_URL = ORDERS_URL + "/stats";
 // URL for cancelling an order
 const ORDER_CANCEL_URL = `${BASE_URL}/orders`;
 
-const REVIEWS_URL = BASE_URL + "/review"
+const REVIEWS_URL = BASE_URL + "/review";
 const FILTER_PRODUCTS_URL = PRODUCTS_URL + "/trending";
+
+const PROCESS_REVIEWS = REVIEWS_URL + "/processReviews";
+
+const SEARCH_REVIEWS = REVIEWS_URL + "/searchReviews";
 
 const AUTOCOMPLETE_PRODUCTS_URL = PRODUCTS_URL + "/autocomplete";
 
+const CUSTOMER_SERVICE_URL = BASE_URL + "/tickets";
+
+const GENERATE_NEW_DESCRIPTIONS = PRODUCTS_URL + "/generateNewDescriptions";
+
+const RECOMMEND_PRODUCTS = PRODUCTS_URL + "/recommendproducts";
+
 export {
-    BASE_URL,
-    LOGIN_URL,
-    REGISTER_URL,
-    PRODUCTS_URL,
-    IMAGES_BASE_URL,
-    CART_URL,
-    STORE_LOCATIONS_URL,
-    PLACE_ORDER_URL,
-    ORDERS_URL,
-    ORDER_STATUS_URL,
-    ORDER_CANCEL_URL,
-    REVIEWS_URL,
-    FILTER_PRODUCTS_URL,
-    STATS_URL,
-    INVENTORY_URL,
-    SALES_REPORT_URL,
-    AUTOCOMPLETE_PRODUCTS_URL
+  AUTOCOMPLETE_PRODUCTS_URL,
+  BASE_URL,
+  CART_URL,
+  CUSTOMER_SERVICE_URL,
+  FILTER_PRODUCTS_URL,
+  GENERATE_NEW_DESCRIPTIONS,
+  IMAGES_BASE_URL,
+  INVENTORY_URL,
+  LOGIN_URL,
+  ORDERS_URL,
+  ORDER_CANCEL_URL,
+  ORDER_STATUS_URL,
+  PLACE_ORDER_URL,
+  PROCESS_REVIEWS,
+  PRODUCTS_URL,
+  RECOMMEND_PRODUCTS,
+  REGISTER_URL,
+  REVIEWS_URL,
+  SALES_REPORT_URL,
+  SEARCH_REVIEWS,
+  STATS_URL,
+  STORE_LOCATIONS_URL,
 };

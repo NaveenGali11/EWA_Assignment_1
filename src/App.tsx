@@ -16,6 +16,9 @@ import FilteredProductsPage from "./screens/FilteredProducts";
 import Stats from "./screens/Stats";
 import InventoryReport from "./screens/InventoryReport";
 import SalesReport from "./screens/SalesReport";
+import {OpenTicket} from "./screens/customerservice/OpenTicket";
+import {TrackTicket} from "./screens/customerservice/TrackTicket";
+import RecommendProducts from "./screens/RecommendProducts";
 
 const App = () => {
     return (
@@ -31,6 +34,23 @@ const App = () => {
                         element={
                             <ProtectedRoute adminRoute={true}>
                                 <AddProduct/>
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/recommendproducts" element={<RecommendProducts/>}/>
+                    <Route
+                        path="/openticket"
+                        element={
+                            <ProtectedRoute adminRoute={false}>
+                                <OpenTicket/>
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/trackticket"
+                        element={
+                            <ProtectedRoute adminRoute={false}>
+                                <TrackTicket/>
                             </ProtectedRoute>
                         }
                     />

@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   Button,
   Card,
@@ -6,20 +8,22 @@ import {
   CardTitle,
   Col,
   Container,
+  Input,
   Row,
   Spinner,
 } from "reactstrap";
-import { useParams } from "react-router-dom";
-import { FullProduct, getSingleProduct } from "../../sevices/ProductService";
-import AccessoryItem from "../AccessoryItem/AccessoryItem";
 import Swal from "sweetalert2";
-import axios from "axios";
-import { CART_URL, REVIEWS_URL } from "../../utils/urlUtils";
+import { FullProduct, getSingleProduct } from "../../sevices/ProductService";
+import { CART_URL, REVIEWS_URL, SEARCH_REVIEWS } from "../../utils/urlUtils";
+import AccessoryItem from "../AccessoryItem/AccessoryItem";
 
 interface Review {
   _id: string;
+  product_id: string;
   user_id: string;
   username: string;
+  order_id: string;
+  price: number;
   rating: number;
   comment: string;
   created_at: string;
@@ -31,6 +35,14 @@ const ViewProduct = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [cumulativeRating, setCumulativeRating] = useState<number | null>(null);
   const [loadingReviews, setLoadingReviews] = useState<boolean>(false);
+  const [reviewQuery, setReviewQuery] = useState("");
+
+  function truncateText(text: string, maxLength: number) {
+    if (text.length <= maxLength) {
+      return text; // If the text is shorter than maxLength, return it as is.
+    }
+    return text.substring(0, maxLength) + "... Read More";
+  }
 
   // Fetch product details and reviews
   useEffect(() => {
@@ -60,8 +72,12 @@ const ViewProduct = () => {
       setReviews(fetchedReviews);
 
       // Calculate cumulative rating
-      const totalRating = fetchedReviews.reduce((sum: number, review: Review) => sum + review.rating, 0);
-      const avgRating = fetchedReviews.length > 0 ? totalRating / fetchedReviews.length : null;
+      const totalRating = fetchedReviews.reduce(
+        (sum: number, review: Review) => sum + review.rating,
+        0
+      );
+      const avgRating =
+        fetchedReviews.length > 0 ? totalRating / fetchedReviews.length : null;
       setCumulativeRating(avgRating);
     } catch (err) {
       console.error("Error fetching reviews:", err);
@@ -104,6 +120,25 @@ const ViewProduct = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
+
+  const searchReviews = async () => {
+    setLoadingReviews(true);
+    await axios
+      .post(SEARCH_REVIEWS, {
+        queryText: reviewQuery,
+        productId: id,
+      })
+      .then(
+        (res: any) => {
+          console.log("RES :_ ", res);
+          setReviews(res.data.results);
+        },
+        (err) => {
+          console.log("ERR :_ ", err);
+        }
+      );
+    setLoadingReviews(false);
+  };
 
   return (
     <Container style={{ marginTop: "20px" }}>
@@ -155,7 +190,8 @@ const ViewProduct = () => {
             {/* Cumulative Rating */}
             {cumulativeRating !== null && (
               <p>
-                <strong>Overall Rating:</strong> {cumulativeRating.toFixed(1)} / 5
+                <strong>Overall Rating:</strong> {cumulativeRating.toFixed(1)} /
+                5
               </p>
             )}
 
@@ -204,33 +240,65 @@ const ViewProduct = () => {
       )}
 
       {/* Reviews Section */}
-      <Card style={{
-              marginTop: "20px"
-            }}>
+      <Card
+        style={{
+          marginTop: "20px",
+        }}
+      >
         <CardBody>
           <Row>
             <h3>Customer Reviews</h3>
+            <div
+              style={{
+                marginTop: "10px",
+                marginBottom: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <Input
+                type="text"
+                value={reviewQuery}
+                onChange={(e) => setReviewQuery(e.target.value)}
+                placeholder={"Search Reviews..."}
+                style={{
+                  borderRadius: "30px",
+                  flex: 4,
+                }}
+              />
+              <Button
+                onClick={searchReviews}
+                color={"primary"}
+                style={{
+                  flex: 1,
+                  borderRadius: "10px",
+                }}
+                disabled={reviewQuery || loadingReviews ? false : true}
+              >
+                {loadingReviews ? <Spinner size="sm" /> : "Search Reviews"}
+              </Button>
+            </div>
             {loadingReviews ? (
               <Spinner />
             ) : reviews.length === 0 ? (
               <p>No reviews yet.</p>
-            ) : reviews.map((review) => (
-                <Col lg={"4"}>
-                  <Card key={review._id} style={{ marginBottom: "20px" }}>
-                    <CardBody>
-                      <CardTitle tag="h5">
-                        User - {review.rating} / 5
-                      </CardTitle>
-                      <p>{review.comment}</p>
-                      <p>
-                        <small>
-                          Reviewed on {new Date(review.created_at).toLocaleDateString()}
-                        </small>
-                      </p>
-                    </CardBody>
-                  </Card>
-                </Col>
-              )
+            ) : (
+              reviews
+                .filter((product) => product.product_id === id)
+                .map((review, index) => (
+                  <Col lg={"4"} key={index}>
+                    <Card key={review._id} style={{ marginBottom: "20px" }}>
+                      <CardBody>
+                        <CardTitle tag="h5">
+                          User - {review.rating} / 5
+                        </CardTitle>
+                        <p>{truncateText(review.comment, 100)}</p>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                ))
             )}
           </Row>
         </CardBody>

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {
     Collapse,
     DropdownItem,
@@ -23,7 +23,7 @@ function Header() {
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("token");
     const userType = localStorage.getItem("userType");
-    const navigate = useNavigate(); // Now navigate can be used
+    const navigate = useNavigate();
 
     const logoutUser = () => {
         localStorage.removeItem("user_id");
@@ -63,7 +63,10 @@ function Header() {
                                 : <></>
                         }
                         <NavItem>
-                            <NavLink href="/products/top-rated">Top Rated</NavLink>
+                            <NavLink as={Link} href="/products/top-rated">Top Rated</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink as={Link} href="/recommendproducts">Recommend Products</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/products/trending">Trending</NavLink>
@@ -84,6 +87,18 @@ function Header() {
                                 <NavLink href="/cart/">Cart</NavLink>
                             </NavItem>
                         )}
+                        {
+                            token && userType === "customer" ? <UncontrolledDropdown nav inNavbar>
+                                <DropdownToggle nav caret>
+                                    Customer Service
+                                </DropdownToggle>
+                                <DropdownMenu end>
+                                    <NavLink href="/openticket">Open a Ticket</NavLink>
+                                    <DropdownItem divider/>
+                                    <NavLink href="/trackticket">Status of a Ticket</NavLink>
+                                </DropdownMenu>
+                            </UncontrolledDropdown> : null
+                        }
                         {token ? (
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>

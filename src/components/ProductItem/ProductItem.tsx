@@ -27,9 +27,6 @@ const ProductItem: FC<ProductItemProps> = ({name, imageUrl, description, price, 
                     {name}
                 </CardTitle>
                 <CardText>
-                    {description}
-                </CardText>
-                <CardText>
                     $ {price}
                 </CardText>
                 <Button color="primary" onClick={onViewClick}>
